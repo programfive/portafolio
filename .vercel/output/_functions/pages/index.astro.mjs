@@ -53,7 +53,7 @@ Desarrollador Fullstack
       name: "CV",
       tooltip: "Descargar CV",
       path: "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z",
-      link: "/Josue-david-kennedy.pdf"
+      link: "./Josue-david-kennedy.pdf"
     },
     {
       name: "GitHub",
