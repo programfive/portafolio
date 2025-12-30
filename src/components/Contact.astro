@@ -266,7 +266,6 @@ import Instagram from "./icons/instragram.astro";
 </section>
 
 <script>
-    import { actions } from "astro:actions";
     import { z } from "zod";
 
     const contactSchema = z.object({
@@ -323,7 +322,7 @@ import Instagram from "./icons/instragram.astro";
                 return;
             }
 
-            // Envío con Astro Actions
+            // Envío con API /api/send-email
             const submitBtn = form.querySelector(
                 'button[type="submit"]',
             ) as HTMLButtonElement;
@@ -334,20 +333,40 @@ import Instagram from "./icons/instragram.astro";
             status.classList.remove("text-green-500", "text-red-500");
             status.classList.add("text-[#FFD700]");
 
-            const { data: responseData, error } = await actions.send(data);
+            try {
+                const response = await fetch("/api/send-email", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                });
 
-            if (!error) {
-                status.textContent = "¡Mensaje enviado con éxito!";
-                status.classList.replace("text-[#FFD700]", "text-green-500");
-                form.reset();
+                const result = await response.json();
 
-                setTimeout(() => {
-                    status.textContent = "";
-                }, 5000);
-            } else {
+                if (response.ok) {
+                    status.textContent =
+                        result.message || "¡Mensaje enviado con éxito!";
+                    status.classList.replace(
+                        "text-[#FFD700]",
+                        "text-green-500",
+                    );
+                    form.reset();
+
+                    setTimeout(() => {
+                        status.textContent = "";
+                    }, 5000);
+                } else {
+                    status.textContent =
+                        result.message || "Error al enviar el correo.";
+                    status.classList.replace(
+                        "text-[#FFD700]",
+                        "text-red-500",
+                    );
+                }
+            } catch (error) {
                 console.error(error);
-                status.textContent =
-                    error.message || "Error al enviar el correo.";
+                status.textContent = "Error al enviar el correo.";
                 status.classList.replace("text-[#FFD700]", "text-red-500");
             }
 
