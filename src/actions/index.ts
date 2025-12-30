@@ -14,7 +14,7 @@ export const server = {
         }),
         handler: async ({ email, subject, message }) => {
             const { data, error } = await resend.emails.send({
-                from: 'Josue david Kennedy <admin@gmail.com>',
+                 from: 'Josue Kennedy <contacto@josuekennedy.com>',
                 to: ['kennedysuedavid24@gmail.com'],
                 replyTo: email,
                 subject: `Nuevo Mensaje de Portafolio: ${subject}`,
