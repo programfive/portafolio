@@ -1,7 +1,7 @@
 ---
 import GitHub from "./icons/github.astro";
 import LinkedIn from "./icons/linkeding.astro";
-import Twitter from "./icons/twiter.astro";
+import Instagram from "./icons/instragram.astro";
 
 // Componente Contact - Estética Premium con Formulario en Card
 ---
@@ -260,40 +260,13 @@ import Twitter from "./icons/twiter.astro";
                     </div>
                 </div>
 
-                <!-- Redes Sociales -->
-                <div class="pt-8 border-t border-white/5">
-                    <p
-                        class="text-white font-bold text-sm uppercase tracking-wider mb-6"
-                    >
-                        Redes Sociales
-                    </p>
-                    <div class="flex gap-4">
-                        <a
-                            href="#"
-                            class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#FFD700] hover:border-[#FFD700] transition-all duration-300"
-                        >
-                            <GitHub class="w-5 h-5" />
-                        </a>
-                        <a
-                            href="#"
-                            class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#FFD700] hover:border-[#FFD700] transition-all duration-300"
-                        >
-                            <LinkedIn class="w-5 h-5" />
-                        </a>
-                        <a
-                            href="#"
-                            class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-[#FFD700] hover:border-[#FFD700] transition-all duration-300"
-                        >
-                            <Twitter class="w-5 h-5" />
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </section>
 
 <script>
+    import { actions } from "astro:actions";
     import { z } from "zod";
 
     const contactSchema = z.object({
@@ -325,9 +298,9 @@ import Twitter from "./icons/twiter.astro";
 
             const formData = new FormData(form);
             const data = {
-                email: formData.get("email"),
-                subject: formData.get("subject"),
-                message: formData.get("message"),
+                email: formData.get("email") as string,
+                subject: formData.get("subject") as string,
+                message: formData.get("message") as string,
             };
 
             const result = contactSchema.safeParse(data);
@@ -350,7 +323,7 @@ import Twitter from "./icons/twiter.astro";
                 return;
             }
 
-            // Simulación de envío
+            // Envío con Astro Actions
             const submitBtn = form.querySelector(
                 'button[type="submit"]',
             ) as HTMLButtonElement;
@@ -358,19 +331,28 @@ import Twitter from "./icons/twiter.astro";
             submitBtn.disabled = true;
             submitBtn.style.opacity = "0.7";
             status.textContent = "Enviando...";
+            status.classList.remove("text-green-500", "text-red-500");
             status.classList.add("text-[#FFD700]");
 
-            setTimeout(() => {
+            const { data: responseData, error } = await actions.send(data);
+
+            if (!error) {
                 status.textContent = "¡Mensaje enviado con éxito!";
                 status.classList.replace("text-[#FFD700]", "text-green-500");
                 form.reset();
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = "1";
 
                 setTimeout(() => {
                     status.textContent = "";
                 }, 5000);
-            }, 1500);
+            } else {
+                console.error(error);
+                status.textContent =
+                    error.message || "Error al enviar el correo.";
+                status.classList.replace("text-[#FFD700]", "text-red-500");
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
         });
     }
 </script>
