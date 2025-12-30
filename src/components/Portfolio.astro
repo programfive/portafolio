@@ -1,0 +1,179 @@
+---
+import NextJs from "./icons/nextjs.astro";
+import OpenAI from "./icons/openai.astro";
+import Tailwind from "./icons/tailwind.astro";
+import Supabase from "./icons/supabase.astro";
+import React from "./icons/react.astro";
+import FramerMotion from "./icons/framer_motion.astro";
+import Prisma from "./icons/prisma.astro";
+import Clerk from "./icons/clerk.astro";
+import Laravel from "./icons/laravel.astro";
+import Php from "./icons/php.astro";
+import MySql from "./icons/mysql.astro";
+
+// Componente Portfolio - Galería de proyectos con mejorado diseño
+const projects = [
+  {
+    title: 'ChatGPT Clone',
+    category: 'Fullstack',
+    description: 'Réplica funcional de ChatGPT con streaming de respuestas e historial.',
+    image: '/images/project-1.png',
+    link: 'https://clone-chatgpt-nextjs.vercel.app/',
+    repo: 'https://github.com/programfive/chatgpt-clone',
+    tags: [
+      { name: 'Next.js', Icon: NextJs },
+      { name: 'OpenAI', Icon: OpenAI },
+      { name: 'Prisma', Icon: Prisma },
+      { name: 'Clerk', Icon: Clerk }
+    ],
+    delay: '100'
+  },
+  {
+    title: 'WhatsApp Clone',
+    category: 'Fullstack',
+    description: 'Mensajería en tiempo real con estados de presencia y autenticación.',
+    image: '/images/project-2.png',
+    link: 'https://clone-whatsapp-nextjs.vercel.app/',
+    repo: 'https://github.com/programfive/whatsapp-clone',
+    tags: [
+      { name: 'Next.js', Icon: NextJs },
+      { name: 'Supabase', Icon: Supabase },
+      { name: 'Tailwind', Icon: Tailwind }
+    ],
+    delay: '200'
+  },
+  {
+    title: 'Weather Forecast',
+    category: 'Frontend',
+    description: 'App de clima con animaciones fluidas y datos de OpenWeather.',
+    image: '/images/project-3.png',
+    link: 'https://programfive.github.io/WeatherForecast/',
+    repo: 'https://github.com/programfive/WeatherForecast',
+    tags: [
+      { name: 'React', Icon: React },
+      { name: 'Framer', Icon: FramerMotion },
+      { name: 'Tailwind', Icon: Tailwind }
+    ],
+    delay: '300'
+  },
+  {
+    title: 'Sistema Restaurante',
+    category: 'ERP / POS',
+    description: 'Gestión integral: inventario, ventas y reportes PDF.',
+    image: '/images/project-4.png',
+    repo: 'https://github.com/programfive/restaurante',
+    tags: [
+      { name: 'Laravel', Icon: Laravel },
+      { name: 'Filament', Icon: Php },
+      { name: 'Tailwind', Icon: Tailwind },
+      { name: 'MySQL', Icon: MySql }
+    ],
+    delay: '400'
+  }
+];
+---
+
+<section id="portfolio" class="relative py-16 lg:py-24 px-6 bg-[#1a1a1a] overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+        <!-- Título de la sección -->
+        <div class="mb-20 text-center lg:text-left reveal">
+            <h2 class="text-5xl lg:text-7xl font-bold text-white font-serif mb-4 flex flex-col lg:flex-row lg:items-center gap-4">
+                Mis Proyectos
+            </h2>
+            <div class="w-20 h-[3px] bg-[#FFD700] mx-auto lg:mx-0"></div>
+        </div>
+
+        <!-- Grid de Proyectos Mejorado -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {projects.map((project, index) => (
+                <div 
+                    class={`group flex flex-col bg-[#1f1f1f] border border-white/5 rounded-2xl overflow-hidden hover:border-[#FFD700]/30 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] reveal ${index % 2 === 0 ? 'reveal-left' : 'reveal-right'}`}
+                    style={`transition-delay: ${index * 150}ms;`}
+                >
+                    <!-- Contenedor de Imagen con Overlay -->
+                    <div class="relative aspect-[16/9] overflow-hidden">
+                        <img 
+                            src={project.image} 
+                            alt={`Vista previa del proyecto ${project.title} - ${project.category}`}
+                            loading="lazy"
+                            class="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#1f1f1f] via-transparent to-transparent opacity-60"></div>
+                        
+                        <!-- Categoría flotante -->
+                        <span class="absolute top-4 right-4 px-3 py-1 bg-black/50 backdrop-blur-md border border-white/10 text-[#FFD700] text-[10px] font-bold uppercase tracking-wider rounded-full">
+                            {project.category}
+                        </span>
+                    </div>
+                    
+                    <!-- Contenido del Card -->
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-[#FFD700] transition-colors">
+                            {project.title}
+                        </h3>
+                        
+                        <p class="text-white/70 text-sm leading-relaxed mb-6">
+                            {project.description}
+                        </p>
+
+                        <!-- Tags de Tecnologías -->
+                        <div class="flex flex-wrap gap-2 mb-8 mt-auto">
+                            {project.tags.map(tag => (
+                                <span class="flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-white/10 rounded-md text-[10px] text-white/70 font-medium group/tag hover:bg-white/10 hover:border-[#FFD700]/30 transition-all duration-300">
+                                    <tag.Icon class="w-3.5 h-3.5 text-[#FFD700]/70 group-hover/tag:text-[#FFD700] transition-colors" />
+                                    {tag.name}
+                                </span>
+                            ))}
+                        </div>
+                        
+                        <!-- Botones de Acción -->
+                        <div class="grid grid-cols-2 gap-4">
+                            {project.link && (
+                                <a 
+                                    href={project.link} 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex items-center justify-center gap-2 py-3 bg-[#FFD700] text-black text-xs font-bold uppercase tracking-widest rounded-lg hover:bg-white transition-all duration-300"
+                                >
+                                    <span>Demo Live</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                </a>
+                            )}
+                            
+                            {project.repo && (
+                                <a 
+                                    href={project.repo} 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex items-center justify-center gap-2 py-3 bg-white/5 border border-white/10 text-white text-xs font-bold uppercase tracking-widest rounded-lg hover:bg-white hover:text-black transition-all duration-300"
+                                >
+                                    <span>GitHub</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        <!-- Botón Ver Más -->
+        <div class="mt-20 flex justify-center reveal reveal-scale">
+            <a 
+                href="https://github.com/programfive" 
+                target="_blank"
+                class="group relative inline-flex items-center gap-3 px-10 py-4 bg-transparent border-2 border-[#FFD700] text-[#FFD700] font-bold text-sm tracking-widest uppercase rounded-lg overflow-hidden transition-all duration-300 hover:text-black shadow-[0_0_20px_rgba(255,215,0,0.05)]"
+            >
+                <span class="relative z-10 flex items-center gap-3">
+                    Explorar Todos los Repositorios
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </span>
+                <div class="absolute inset-0 bg-[#FFD700] -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+  /* Estilos base */
+</style>

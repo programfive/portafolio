@@ -1,0 +1,105 @@
+---
+// Componente Experience - Experiencia laboral
+import NextJs from "./icons/nextjs.astro";
+import Tailwind from "./icons/tailwind.astro";
+import MaterialUi from "./icons/material_ui.astro";
+import Strapi from "./icons/strapi.astro";
+import GitLab from "./icons/gitlab.astro";
+
+const experiences = [
+  {
+    year: '2025 - Presente',
+    title: 'Desarrollador Web',
+    company: 'Desarrollamelo',
+    url: 'https://desarrollamelo.com/inmobiliario/',
+    description: 'Participación activa en el análisis y expansión de modelos de negocio digitales. Contribuí en la creación y mejora de plataformas clave como: <br/><br/> • <b>LBC Seguros:</b> Desarrollo de landing page con conexión robusta a Strapi CMS para gestión dinámica de contenido.<br/> • <b>TLC ecommerce Telecompro:</b> Implementación de funcionalidades avanzadas para comercio electrónico, optimización de la gestión de productos y refinamiento de la interfaz de usuario.',
+    technologies: [
+      { name: "Next.js", Icon: NextJs },
+      { name: "Tailwind", Icon: Tailwind },
+      { name: "Material UI", Icon: MaterialUi },
+      { name: "Strapi", Icon: Strapi },
+      { name: "GitLab", Icon: GitLab }
+    ],
+    delay: '100'
+  }
+];
+---
+
+<section id="experience" class="py-16 lg:py-24 px-6 max-w-6xl mx-auto relative overflow-hidden">
+  <div >
+    <!-- Título Editorial Izquierda -->
+    <div class="mb-20 reveal">
+      <h2 class="text-5xl lg:text-7xl font-bold text-white font-serif mb-4">
+        Experiencia
+      </h2>
+      <div class="w-16 h-[2px] bg-[#FFD700] opacity-50"></div>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="relative">
+      <!-- Línea Vertical Central (Desplazada a la izquierda) -->
+      <div class="absolute left-46 lg:left-48 top-0 bottom-0 w-px bg-white/10 hidden sm:block"></div>
+
+      <!-- Items de Experiencia -->
+      <div class="space-y-16 lg:space-y-24">
+        {experiences.map((exp, index) => (
+          <div 
+            class="relative flex flex-col sm:flex-row items-start gap-8 lg:gap-12 reveal"
+            style={`transition-delay: ${index * 200}ms;`}
+          >
+            <!-- Año y Punto -->
+            <div class="flex items-center gap-4 sm:w-56 shrink-0">
+              <!-- Año Box -->
+              <div class="bg-white/5 border border-white/10 rounded px-4 py-1 w-auto text-center">
+                <span class="text-white/70 text-xs font-bold tracking-widest">{exp.year}</span>
+              </div>
+              
+              <!-- Punto Dorado Recto en la línea -->
+              <div class="relative z-10 w-4 h-4 rounded-full bg-[#FFD700] shadow-[0_0_15px_rgba(255,215,0,0.5)] hidden sm:block">
+                <div class="absolute inset-0 rounded-full bg-[#FFD700] animate-ping opacity-20"></div>
+              </div>
+            </div>
+
+            <!-- Contenido -->
+            <div class="flex-1 pt-1">
+              <h3 class="text-2xl lg:text-3xl font-bold text-white mb-2 font-sans tracking-tight">
+                {exp.title}
+              </h3>
+              <a 
+                href={exp.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-block text-[#FFD700]/80 hover:text-[#FFD700] font-medium text-sm lg:text-base mb-4 tracking-wide transition-colors duration-300 hover:underline hover:underline-offset-4"
+              >
+                {exp.company}
+              </a>
+              
+              <!-- Tags de Tecnologías -->
+              <div class="flex flex-wrap gap-3 mb-6">
+                {exp.technologies?.map((tech) => (
+                  <div class="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full group hover:border-[#FFD700]/50 transition-all duration-300">
+                    <tech.Icon class="w-4 h-4 text-white/50 group-hover:text-white transition-colors" />
+                    <span class="text-white/70 text-[10px] font-bold uppercase tracking-wider group-hover:text-white transition-colors">
+                      {tech.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div class="relative">
+                <p 
+                  class="text-white/70 leading-relaxed text-sm lg:text-base font-light text-justify sm:text-left"
+                  set:html={exp.description}
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Estilos base */
+</style>

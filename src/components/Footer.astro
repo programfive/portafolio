@@ -1,0 +1,122 @@
+---
+import GitHub from "./icons/github.astro";
+import LinkedIn from "./icons/linkeding.astro";
+import Twitter from "./icons/twiter.astro";
+import Facebook from "./icons/facebook.astro";
+import WhatsApp from "./icons/whatsapp.astro";
+
+// Componente Footer - Pie de página Minimalista Premium
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative bg-[#1a1a1a] pb-24 pt-10 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <!-- Línea con Iconos Sociales -->
+        <div class="relative flex items-center justify-center mb-16">
+            <!-- Línea Izquierda -->
+            <div
+                class="grow h-px bg-linear-to-r from-transparent via-[#FFD700]/30 to-[#FFD700]"
+            >
+            </div>
+
+            <!-- Contenedor de Iconos -->
+            <div
+                class="flex items-center gap-6 px-8 relative z-10 bg-[#1a1a1a]"
+            >
+                <a
+                    href="#"
+                    aria-label="Facebook"
+                    class="text-white/60 hover:text-[#FFD700] transition-all duration-300 hover:scale-110"
+                >
+                    <Facebook class="w-5 h-5" />
+                </a>
+                <a
+                    href="#"
+                    aria-label="Twitter"
+                    class="text-white/60 hover:text-[#FFD700] transition-all duration-300 hover:scale-110"
+                >
+                    <Twitter class="w-5 h-5" />
+                </a>
+                <a
+                    href="#"
+                    aria-label="LinkedIn"
+                    class="text-white/60 hover:text-[#FFD700] transition-all duration-300 hover:scale-110"
+                >
+                    <LinkedIn class="w-5 h-5" />
+                </a>
+                <a
+                    href="#"
+                    aria-label="WhatsApp"
+                    class="text-white/60 hover:text-[#FFD700] transition-all duration-300 hover:scale-110"
+                >
+                    <WhatsApp class="w-5 h-5" />
+                </a>
+            </div>
+
+            <!-- Línea Derecha -->
+            <div
+                class="grow h-px bg-linear-to-r from-[#FFD700] via-[#FFD700]/30 to-transparent"
+            >
+            </div>
+        </div>
+
+        <!-- Texto Final -->
+        <div class="text-center space-y-8 reveal reveal-scale">
+            <h2
+                class="text-3xl lg:text-5xl font-serif text-[#FFD700]/90 italic tracking-tight opacity-70 hover:opacity-100 transition-opacity duration-700"
+            >
+                "Thanks for Scrolling"
+            </h2>
+
+            <div class="pt-8 flex flex-col items-center gap-4">
+                <p
+                    class="text-[10px] uppercase tracking-[0.5em] text-white/20 font-bold"
+                >
+                    &copy; {currentYear} Josué David Kennedy
+                </p>
+                <div class="w-1 h-1 rounded-full bg-[#FFD700]/40"></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Botón de scroll to top Minimalista -->
+<button
+    id="scroll-to-top"
+    class="fixed bottom-8 right-8 w-12 h-12 bg-[#1a1a1a] border border-white/10 rounded-full flex items-center justify-center shadow-2xl hover:border-[#FFD700]/50 hover:text-[#FFD700] text-white/50 opacity-0 invisible transition-all duration-500 z-50 group"
+    aria-label="Volver arriba"
+>
+    <svg
+        class="w-5 h-5 group-hover:-translate-y-1 transition-transform"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+    >
+        <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+</button>
+
+<script>
+    const scrollToTopBtn = document.getElementById("scroll-to-top");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 400) {
+            scrollToTopBtn?.classList.remove("opacity-0", "invisible");
+            scrollToTopBtn?.classList.add("opacity-100", "visible");
+        } else {
+            scrollToTopBtn?.classList.add("opacity-0", "invisible");
+            scrollToTopBtn?.classList.remove("opacity-100", "visible");
+        }
+    });
+
+    scrollToTopBtn?.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    });
+</script>

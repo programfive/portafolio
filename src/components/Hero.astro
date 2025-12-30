@@ -1,0 +1,285 @@
+---
+// Componente Hero - Sección principal del portafolio
+---
+
+<section
+    id="home"
+    class="relative pt-10 lg:pt-20 flex items-center justify-center overflow-hidden bg-[#1a1a1a]"
+>
+    <!-- Elementos de Fondo (Glows/Blur) -->
+    <div
+        class="absolute top-1/4 -left-20 w-80 h-80 bg-[#FFD700] rounded-full mix-blend-screen filter blur-[120px] opacity-20 animate-pulse-slow"
+    >
+    </div>
+    <div
+        class="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#FFD700] rounded-full mix-blend-screen filter blur-[150px] opacity-10 animate-pulse-slow"
+        style="animation-delay: 2s;"
+    >
+    </div>
+    <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,transparent_0%,#1a1a1a_80%)] opacity-60 z-0"
+    >
+    </div>
+
+    <!-- Grid Principal -->
+    <div
+        class="max-w-7xl mx-auto px-6 w-full relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+    >
+        <!-- Columna Izquierda: Texto -->
+        <div class="space-y-10 lg:pl-12 relative z-20 pt-4 lg:pt-0">
+            <div class="flex flex-col gap-2">
+                <!-- Label Superior -->
+                <div
+                    class="reveal-content flex items-center gap-4"
+                    style="--delay: 0.2s;"
+                >
+                    <span
+                        class="text-white/60 text-sm font-bold tracking-[0.5em] uppercase font-sans"
+                        >SOY</span
+                    >
+                    <div class="h-px w-12 bg-[#FFD700]/40"></div>
+                </div>
+
+                <!-- Nombre Principal -->
+                <div class="reveal-content" style="--delay: 0.3s;">
+                    <h1
+                        class="text-6xl sm:text-7xl lg:text-8xl xl:text-[110px] font-bold text-[#FFD700] leading-[0.9] font-heading tracking-tight drop-shadow-2xl"
+                    >
+                        Josue <br class="hidden sm:block" />Kennedy
+                    </h1>
+                </div>
+
+                <!-- Cargo y Descripción -->
+                <div
+                    class="space-y-6 mt-2 reveal-content"
+                    style="--delay: 0.5s;"
+                >
+                    <h2
+                        class="text-2xl lg:text-4xl text-white font-heading font-medium tracking-wide border-l-2 border-[#FFD700] pl-6"
+                    >
+                        Desarrollador Fullstack
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Boton Contact Me -->
+            <div class="reveal-content w-full pt-4" style="--delay: 0.7s;">
+                <a
+                    href="#contact"
+                    class="group w-full md:w-fit relative inline-flex items-center justify-center px-10 py-5 bg-transparent border-2 border-[#FFD700] text-[#FFD700] text-sm md:text-lg font-bold rounded-lg overflow-hidden transition-all duration-500 uppercase tracking-[0.2em] hover:text-black shadow-lg shadow-[#FFD700]/5"
+                >
+                    <span class="relative z-10">Contáctame</span>
+                    <div
+                        class="absolute inset-0 bg-[#FFD700] -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"
+                    >
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Columna Derecha: Imagen y Redes -->
+        <div
+            class="relative flex justify-center lg:justify-end items-end w-full"
+        >
+            <!-- Contenedor Imagen (Se mantiene igual como se pidió) -->
+            <div
+                class="relative lg:pr-12 z-10 w-full h-full flex items-end justify-center lg:justify-end reveal-image"
+            >
+                <div
+                    class="relative w-full h-full flex items-end justify-center lg:justify-end group"
+                >
+                    <!-- Glow detrás de la cabeza/perfil -->
+                    <div
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-[#FFD700] rounded-full blur-[120px] opacity-20 group-hover:opacity-40 transition-opacity duration-700"
+                    >
+                    </div>
+                    <img
+                        src="/images/profile.png"
+                        alt="Josue Kennedy - Desarrollador Fullstack especializado en Laravel & Next.js"
+                        class="relative w-auto h-full object-contain filter grayscale brightness-90 animate-float lg:pr-32"
+                        style="mask-image: linear-gradient(to bottom, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);"
+                    />
+                </div>
+            </div>
+            <!-- Sidebar Redes Sociales -->
+            <div
+                id="fixed-socials"
+                class="fixed right-4 md:right-6 bottom-40 md:bottom-32 z-100 reveal-socials flex flex-col items-center"
+            >
+                <!-- Línea Dorada Vertical -->
+                <div
+                    id="socials-line"
+                    class="w-px h-16 md:h-32 bg-linear-to-t from-[#FFD700] via-[#FFD700]/40 to-transparent mb-4 transition-all duration-500"
+                >
+                </div>
+
+                <div 
+                    id="socials-container"
+                    class="flex flex-col items-center gap-6 md:gap-8 px-3 py-6 rounded-full transition-all duration-500 border border-transparent"
+                >
+                    <!-- Iconos -->
+                    {
+                        [
+                            {
+                                name: "CV",
+                                tooltip: "Descargar CV",
+                                path: "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z",
+                                link: "/cv.pdf",
+                            },
+                            {
+                                name: "GitHub",
+                                tooltip: "Ver GitHub",
+                                path: "M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12",
+                                link: "https://github.com/programfive",
+                            },
+                            {
+                                name: "LinkedIn",
+                                tooltip: "LinkedIn",
+                                path: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z",
+                                link: "https://linkedin.com/in/josuekennedy",
+                            },
+                        ].map((social) => (
+                            <a
+                                href={social.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="social-icon relative text-white/50 hover:text-[#FFD700] hover:scale-125 transition-all duration-300 transform group/tooltip"
+                                aria-label={social.name}
+                            >
+                                <svg
+                                    class="w-6 h-6"
+                                    fill="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path d={social.path} />
+                                </svg>
+                                
+                                <!-- Tooltip -->
+                                <span class="absolute right-full top-1/2 -translate-y-1/2 mr-4 px-3 py-1.5 bg-[#FFD700] text-black text-[10px] font-bold uppercase tracking-widest rounded opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible group-hover/tooltip:-translate-x-2 transition-all duration-300 whitespace-nowrap z-50 pointer-events-none shadow-[0_4px_15px_rgba(255,215,0,0.3)]">
+                                    {social.tooltip}
+                                    <!-- Triangle -->
+                                    <div class="absolute top-1/2 -right-1 -translate-y-1/2 w-2 h-2 bg-[#FFD700] rotate-45"></div>
+                                </span>
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <script>
+                const socialsContainer = document.getElementById('socials-container');
+                const socialsLine = document.getElementById('socials-line');
+                const heroSection = document.getElementById('home');
+
+                const socialsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) {
+                            // Fuera del Hero: Activar fondo glass y ocultar línea
+                            socialsContainer?.classList.add('bg-white/5', 'backdrop-blur-xl', 'border-white/10', 'shadow-2xl');
+                            if (socialsLine) {
+                                socialsLine.style.opacity = '0';
+                                socialsLine.style.transform = 'scaleY(0)';
+                            }
+                        } else {
+                            // Dentro del Hero: Transparente y mostrar línea
+                            socialsContainer?.classList.remove('bg-white/5', 'backdrop-blur-xl', 'border-white/10', 'shadow-2xl');
+                            if (socialsLine) {
+                                socialsLine.style.opacity = '1';
+                                socialsLine.style.transform = 'scaleY(1)';
+                            }
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                if (heroSection) socialsObserver.observe(heroSection);
+            </script>
+        </div>
+
+
+
+        <style>
+            /* Keyframes para animaciones */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            @keyframes float {
+                0% {
+                    transform: translateY(0px);
+                }
+                50% {
+                    transform: translateY(-15px);
+                }
+                100% {
+                    transform: translateY(0px);
+                }
+            }
+
+            @keyframes pulse-slow {
+                0%,
+                100% {
+                    opacity: 0.1;
+                    transform: scale(1);
+                }
+                50% {
+                    opacity: 0.2;
+                    transform: scale(1.1);
+                }
+            }
+
+
+
+            /* Clases de animación */
+            .reveal-content {
+                opacity: 0;
+                animation: fadeInUp 0.8s ease-out forwards;
+                animation-delay: var(--delay);
+            }
+
+            .reveal-image {
+                opacity: 0;
+                animation: fadeInUp 1.2s ease-out forwards;
+                animation-delay: 0.8s;
+            }
+
+            .reveal-socials {
+                opacity: 0;
+                animation: fadeInUp 0.8s ease-out forwards;
+                animation-delay: 1.2s;
+            }
+
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+
+            .animate-pulse-slow {
+                animation: pulse-slow 8s ease-in-out infinite;
+            }
+
+
+
+            /* Mejora de la máscara de imagen para móviles */
+            @media (max-width: 1024px) {
+                .reveal-image img {
+                    mask-image: linear-gradient(
+                        to bottom,
+                        black 70%,
+                        transparent 100%
+                    );
+                    -webkit-mask-image: linear-gradient(
+                        to bottom,
+                        black 70%,
+                        transparent 100%
+                    );
+                }
+            }
+        </style>
+    </div>
+</section>
