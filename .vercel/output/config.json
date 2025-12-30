@@ -22,14 +22,6 @@
 		{
 			"src": "^/_actions(?:/(.*?))?/?$",
 			"dest": "_render"
-		},
-		{
-			"src": "^/api/send-email/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/$",
-			"dest": "_render"
 		}
 	]
 }

@@ -1,14 +1,11 @@
-// @ts-check
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-
-// https://astro.build/config
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel";
+import vercel from "@astrojs/vercel/serverless";
 
 export default defineConfig({
   site: 'https://josuekennedy.com',
-  output: 'server',
+  output: 'hybrid',
   adapter: vercel(),
   integrations: [sitemap()],
   vite: {
