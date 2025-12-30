@@ -5,7 +5,7 @@ import vercel from "@astrojs/vercel/serverless";
 
 export default defineConfig({
   site: 'https://josuekennedy.com',
-  output: 'hybrid',
+  output: 'server',
   adapter: vercel(),
   integrations: [sitemap()],
   vite: {
