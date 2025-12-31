@@ -19,8 +19,8 @@ export const POST: APIRoute = async ({ request }) => {
         }
 
         const send = await resend.emails.send({
-            from: 'Josue Kennedy <contacto@josuekennedy.com>',
-            to: ['kennedysuedavid24@gmail.com'],
+            from: 'Josue Kennedy <admin@josuekennedy.com>',
+            to: ['josuedavidkennedy@gmail.com'],
             replyTo: email,
             subject: `✨ Nuevo Mensaje de Portafolio: ${subject}`,
             html: `
@@ -69,8 +69,6 @@ export const POST: APIRoute = async ({ request }) => {
             </html>
             `,
         });
-
-        console.log('Resend response:', send);
 
         if (send.error) {
             return new Response(
