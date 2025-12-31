@@ -7,6 +7,8 @@
 
 Portafolio premium desarrollado con **Astro 5.0**, inspirado en una estética "minimalista de lujo": fondos oscuros con acentos dorados, microinteracciones cuidadas y optimización SEO lista para producción.
 
+![Vista previa del portafolio](./public/images/preview.png)
+
 ---
 
 ## 📌 Índice
@@ -130,6 +132,6 @@ Este proyecto está licenciado bajo **MIT**. Consulta el archivo `LICENSE` para 
 
 - Sitio web: [https://josuekennedy.com](https://josuekennedy.com)
 - Correo: [kennedysuedavid24@gmail.com](mailto:kennedysuedavid24@gmail.com)
-- LinkedIn: [linkedin.com/in/josue-kennedy](https://www.linkedin.com/in/josue-kennedy/)
+- LinkedIn: [linkedin.com/in/josue-david-kennedy](https://www.linkedin.com/in/josue-david-kennedy/)
 
 Construido con ❤️ por Josue Kennedy.
