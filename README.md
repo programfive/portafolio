@@ -132,6 +132,6 @@ Este proyecto está licenciado bajo **MIT**. Consulta el archivo `LICENSE` para 
 
 - Sitio web: [https://josuekennedy.com](https://josuekennedy.com)
 - Correo: [kennedysuedavid24@gmail.com](mailto:kennedysuedavid24@gmail.com)
-- LinkedIn: [linkedin.com/in/josue-david-kennedy](https://www.linkedin.com/in/josue-david-kennedy/)
+- LinkedIn: [linkedin.com/in/josue-david-mamani-kennedy](https://www.linkedin.com/in/josue-david-mamani-kennedy/)
 
 Construido con ❤️ por Josue Kennedy.
